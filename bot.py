@@ -25,10 +25,12 @@ def main():
                             def run(self):
                                 for i in range(100):
                                     try:
+                                        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0'}
                                         payload_tuples = str(random.randint(1000000, 99999999999)) + '**' + str(random.randint(1000000, 99999999999))
-                                        r = requests.get(self.site)
-                                        r1 = requests.post(self.site, data=payload_tuples)
-                                        print(r.status_code, r1.status_code)
+                                        r = requests.get(self.site, headers=headers)
+                                        print(r.status_code)
+                                        r1 = requests.post(self.site, headers=headers, data=payload_tuples)
+                                        print(r1.status_code)
                                     except Exception as error:
                                         print(error)
                         for i in range(20):
